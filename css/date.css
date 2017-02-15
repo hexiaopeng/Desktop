@@ -1,0 +1,491 @@
+/*---------------默认样式---------------*/
+* {margin: 0;padding: 0;}
+body {font-family: "microsoft yahei";background-color: #0d686b;}
+li {list-style: none;}
+a {text-decoration: none;color: #000;}
+img {vertical-align: middle;}
+.clearfix:after{content: "";display: block;clear: both;}
+/*---------------默认样式---------------*/
+#calendar {
+	width: 338px;
+	height: 378px;
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,0.5);
+	box-shadow: 0 7px 14px rgba(0,0,0,0.3);
+}
+.day-view {
+	position: relative;
+	height: 100%;
+}
+
+/*---------- 阳历开始 ----------*/
+.day-view .solar {
+	position: relative;
+	height: 222px;
+	border-bottom: 3px solid #fd6a2a;
+}
+.day-view .solar .bg-mask {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 338px;
+	height: 222px;
+	animation: 0.8s ease-in-out bgMask;
+	background-image: url(../img/background/winner_noon.jpg);
+	background-position: center center;
+	background-size: cover;
+}
+@keyframes bgMask{
+	0%{
+		background-size: 130% ;
+	}
+	100%{
+		background-size: 100% ;
+	}
+}
+.day-view .solar .yearsDay-title {
+	position: absolute;
+	left: 50%;
+	top: 10px;
+	z-index: 2;
+	width: 72px;
+	height: 22px;
+	cursor: pointer;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	color: #fff;
+	font-size: 12px;
+	text-align: center;
+	line-height: 22px;
+	margin-left: -36px;
+	border-radius: 10px;
+	background-color: #fd6a2a;
+	z-index: 999;
+	box-shadow: inset 0 2px 2px rgba(0,0,0,0.2), 0 1px 2px rgba(255,255,255,0.2);
+}
+.day-view .solar .yearsDay-title:hover {
+	background-color: #ffa571;
+}
+.day-view .solar .yearsDay-title:active {
+	top: 11px;
+	transform: translateX(1px);
+	background-color: #d4541c;
+}
+.day-view .solar .jump-today {
+	display: none;
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	z-index: 999;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	background-image: url(../img/dayview/now_normal.png);
+}
+.day-view .solar .jump-today:hover {
+	background-image: url(../img/dayview/now_hover.png);
+}
+.day-view .solar .jump-today:active {
+	background-image: url(../img/dayview/now_click.png);
+}
+.day-view .solar .view-day {
+	display: none;
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	z-index: 999;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	background-image: url(../img/dayview/month_normal.png);
+}
+.day-view .solar .view-day:hover {
+	background-image: url(../img/dayview/month_hover.png);
+}
+.day-view .solar .view-day:active {
+	background-image: url(../img/dayview/month_click.png);
+}
+.day-view .solar .view-month {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	z-index: 999;
+	width: 23px;
+	height: 23px;
+	cursor: pointer;
+	background-image: url(../img/monthview/day_normal.png);
+}
+.day-view .solar .view-month:hover {
+	background-image: url(../img/monthview/day_hover.png);
+}
+.day-view .solar .view-month:active {
+	background-image: url(../img/monthview/day_click.png);
+}
+.day-view .solar .number {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 338px;
+	height: 100%;
+	overflow: hidden;
+}
+.day-view .solar .main {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 676px;
+	height: 100%;
+}
+.day-view .solar .main li {
+	float: left;
+	position: relative;
+	width: 338px;
+	height: 100%;
+}
+.day-view .solar .day {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	line-height: 225px;
+}
+.day-view .solar .week {
+	position: absolute;
+	left: 50%;
+	bottom: 36px;
+	font-size: 14px;
+	color: #fff;
+	transform: translateX(-50%);
+}
+.day-view .solar .prev,
+.day-view .solar .next {
+	position: absolute;
+	top: 92px;
+	width: 24px;
+	height: 50px;
+	z-index: 2;
+	cursor: pointer;
+}
+.day-view .solar .prev {
+	left: 14px;
+	background-image: url(../img/dayview/left_normal.png);
+}
+.day-view .solar .prev:hover {
+	background-image: url(../img/dayview/left_hover.png);
+}
+.day-view .solar .prev:active {
+	background-image: url(../img/dayview/left_click.png);
+}
+.day-view .solar .next {
+	right: 14px;
+	background-image: url(../img/dayview/right_normal.png);
+}
+.day-view .solar .next:hover {
+	background-image: url(../img/dayview/right_hover.png);
+}
+.day-view .solar .next:active {
+	background-image: url(../img/dayview/right_click.png);
+}
+/*---------- 阳历结束 ----------*/
+
+/*---------- 阴历开始 ----------*/
+.day-view .lunar {
+	position: absolute;
+	width: 100%;
+	height: 156px;
+	overflow: hidden;
+	z-index: 999;
+}
+.day-view #barBtn {
+	width: 100%;
+	height: 10px;
+	display: none;
+}
+.day-view #barBtn.bar-up {
+	display: block;
+	background-image: url(../img/monthview/bar_up_normal.png);
+}
+.day-view #barBtn.bar-up:hover {
+	background-image: url(../img/monthview/bar_up_hover.png);
+}
+.day-view #barBtn.bar-up:active {
+	background-image: url(../img/monthview/bar_up_click.png);
+}
+.day-view #barBtn.bar-down {
+	display: block;
+	background-image: url(../img/monthview/bar_down_normal.png);
+}
+.day-view #barBtn.bar-down:hover {
+	background-image: url(../img/monthview/bar_down_hover.png);
+}
+.day-view #barBtn.bar-down:active {
+	background-image: url(../img/monthview/bar_down_click.png);
+}
+.day-view .lunar .title {
+	height: 29px;
+	text-align: center;
+	line-height: 29px;
+	font-size: 14px;
+	background-color: #fff;
+	border-bottom: 1px solid #dcdcdc;
+}
+.day-view .lunar .add-note {
+	position: absolute;
+	right: 10px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
+	z-index: 99;
+	background-image: url(../img/addnormal.png);
+}
+.day-view .lunar .add-note:hover {
+	background-image: url(../img/addhover.png);
+}
+.day-view .lunar .add-note:active {
+	background-image: url(../img/addclick.png);
+}
+.day-view .lunar .note {
+	height: 123px;
+	overflow-y: auto;
+	cursor: pointer;
+	background-color: #fff;
+}
+.day-view .lunar .note::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.day-view .lunar .note::-webkit-scrollbar
+{
+	width: 4px;
+}
+
+.day-view .lunar .note::-webkit-scrollbar-thumb
+{
+	background-color: #fd6a2a;
+}
+.day-view .lunar .note li {
+	height: 30px;
+}
+.day-view .lunar .note li span {
+	float: left;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	color: #f96a2e;
+	position: relative;
+	margin-right: 2px;
+	border-right: 1px solid #ffd8ce;
+}
+.day-view .lunar .note li span::after {
+	content: '';
+	position: absolute;
+	right: -4px;
+	top: 0;
+	height: 30px;
+	border-right: 1px solid #ffd8ce;
+}
+.day-view .lunar .note li p {
+	float: left;
+	width: 280px;
+	height: 30px;
+	font-size: 12px;
+	line-height: 30px;
+	margin-left: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: #8e8e8d;
+}
+.day-view .lunar .note li + li {
+	border-top: 1px solid #dbeff6;
+}
+.day-view .lunar .note-details {
+	position: absolute;
+	left: 0;
+	top: -154px;
+	width: 100%;
+	height: 154px;
+	font-size: 14px;
+	line-height: 24px;
+	box-sizing: border-box;
+	background-color: #fbfafa;
+}
+.day-view .lunar .note-details .title {
+	height: 29px;
+	text-align: center;
+	line-height: 29px;
+	font-size: 14px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.day-view .lunar .note-details .details {
+	padding-left: 6px;
+	height: 124px;
+	overflow-y: auto;
+}
+.day-view .lunar .edit-title {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 29px;
+	border: none;
+	outline: none;
+	font-size: 12px;
+	line-height: 30px;
+	padding-left: 10px;
+	padding-right: 35px;
+	border-bottom: 1px solid #dcdcdc;
+	box-sizing: border-box;
+}
+.day-view .lunar .edit-content {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 30px;
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 123px;
+	padding: 0;
+	padding-left: 6px;
+	font-size: 12px;
+	line-height: 24px;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+.day-view .lunar .edit-content::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.day-view .lunar .edit-content::-webkit-scrollbar
+{
+	width: 4px;
+}
+
+.day-view .lunar .edit-content::-webkit-scrollbar-thumb
+{
+	background-color: #fd6a2a;
+}
+.day-view .lunar .note-details .details::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.day-view .lunar .note-details .details::-webkit-scrollbar
+{
+	width: 4px;
+}
+
+.day-view .lunar .note-details .details::-webkit-scrollbar-thumb
+{
+	background-color: #fd6a2a;
+}
+.day-view .lunar .close-note {
+	position: absolute;
+	right: 8.8px;
+	top: 3.4px;
+	width: 23px;
+	height: 23px;
+	z-index: 100;
+	background-image: url(../img/close_normal.png);
+}
+.day-view .lunar .close-note:hover {
+	background-image: url(../img/close_hover.png);
+}
+.day-view .lunar .close-note:active {
+	background-image: url(../img/close_click.png);
+}
+.day-view .lunar .save-note{
+	display: none;
+	position: absolute;
+	right: 6px;
+	top: 5px;
+	width: 26px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	color: #fd6a2a;
+	cursor: default;
+	z-index: 999;
+}
+.day-view .lunar .newTitle {
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: none;
+	outline: none;
+	width: 298px;
+	height: 29px;
+	border-bottom: 1px solid #dcdcdc;
+}
+/*---------- 阴历结束 ----------*/
+
+
+/*---------- 当月视图开始 ----------*/
+.day-view .month-view {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 46px;
+	width: 100%;
+	z-index: 998;
+}
+.day-view .month-view ol {
+	width: 311px;
+	height: 15px;
+	margin: 0 auto;
+}
+.day-view .month-view ol li {
+	float: left;
+	width: 35px;
+	font-size: 16px;
+	line-height: 14px;
+}
+.day-view .month-view ol li + li {
+	margin-left: 11px;
+}
+.day-view .month-view ul {
+	width: 311px;
+	overflow: hidden;
+	margin: 14px auto 0;
+}
+.day-view .month-view ul li {
+	float: left;
+	width: 35px;
+	height: 29px;
+	border-radius: 4px;
+	text-align: center;
+	line-height: 29px;
+	margin-bottom: 5px;
+	background-size: cover;
+}
+.day-view .month-view ul li + li {
+	margin-left: 11px;
+}
+.day-view .month-view ul li.month-week {
+	margin-left: 0;
+}
+.day-view .month-view ul li.today {
+	background-image: url(../img/monthview/today.png);
+}
+.day-view .month-view ul li:hover {
+	color: rgba(255,255,255,0.8);
+	background-image: url(../img/monthview/hover.png);
+}
+.day-view .month-view ul li.active {
+	color: #fff;
+	background-image: url(../img/monthview/click.png);
+}
+.day-view .month-view ul li.gray {
+	color: gray;
+}
+/*---------- 当月视图结束 ----------*/
